@@ -1,0 +1,53 @@
+from replit import clear
+#HINT: You can call clear() to clear the output in the console.
+
+input_name = ""
+input_bid = 0
+bidder_num = 0
+morebidder = "y"
+bidders = []
+
+
+from art import logo
+print(logo)
+print("Welcome to the secret aution program")
+
+#start of function / loop!!
+
+def add_bidder(new_name, new_bid):
+
+  input_name = input("What is your name\n")
+  input_bid = input("What is your Bid\n")
+  
+  new_bidder = {}
+  new_bidder["name"] = input_name
+  new_bidder["bid"] = input_bid
+  bidders.append(new_bidder)
+  global morebidder
+  morebidder = input("Is there another bidder? Please type Y or N \n").lower()
+  clear()
+
+
+while morebidder == "y":
+  add_bidder(input_name, input_bid)
+  print(morebidder)
+
+highest_bidder = ""
+highest_bid = 0
+current_bidder = ""
+current_bid = 0
+
+for x in range(len(bidders)):
+  current_bidder = bidders[x]["name"]
+  current_bid = int(bidders[x]["bid"])
+  if current_bid > highest_bid:
+    highest_bidder = current_bidder
+    highest_bid = current_bid
+
+print(f"Highest bidder is {highest_bidder}, who bid {highest_bid}")
+  
+# print(f"bidder name {bidders[0]['name']}")
+# print(f"bid is {bidders[0]['bid']}")
+
+
+# print("Are there other bidders?")
